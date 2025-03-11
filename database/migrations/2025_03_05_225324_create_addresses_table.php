@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,14 +12,24 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+//            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
+//            $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete();
+//            $table->string('address');
+//            $table->decimal('latitude', 10, 6)->nullable();
+//            $table->decimal('longitude', 10, 6)->nullable();
+//            $table->json('location')->nullable();
+//            $table->string('phone')->nullable();
+//            $table->boolean('default')->default(false);
+
             $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
-            $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete();
             $table->string('address');
+            $table->string('city');
+            $table->string('street');
+            $table->string('landmark');
+            $table->string('phone');
+            $table->boolean('default')->default(false);
             $table->decimal('latitude', 10, 6)->nullable();
             $table->decimal('longitude', 10, 6)->nullable();
-            $table->json('location')->nullable();
-            $table->string('phone')->nullable();
-            $table->boolean('default')->default(false);
             $table->timestamps();
         });
     }

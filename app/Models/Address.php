@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -13,11 +14,11 @@ class Address extends Model
     {
         return $this->belongsTo(Customer::class);
     }
-
-    public function city(): BelongsTo
-    {
-        return $this->belongsTo(City::class);
-    }
+//
+//    public function city(): BelongsTo
+//    {
+//        return $this->belongsTo(City::class);
+//    }
 
     public function shippings(): HasMany
     {

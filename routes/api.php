@@ -27,3 +27,12 @@ Route::prefix('/products')->group(function () {
     Route::get('/brand', [App\Http\Controllers\Customer\ProductsController::class, 'getByBrand']);
     Route::get('/product', [App\Http\Controllers\Customer\ProductsController::class, 'getByProducts']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('/customer')->group(function () {
+        Route::get('/addresses', [\App\Http\Controllers\Customer\AddressController::class, 'index']);
+        Route::post('/addresses', [\App\Http\Controllers\Customer\AddressController::class, 'store']);
+        Route::put('/addresses/{address}', [\App\Http\Controllers\Customer\AddressController::class, 'update']);
+        Route::delete('/addresses/{address}', [\App\Http\Controllers\Customer\AddressController::class, 'destroy']);
+    });
+});
